@@ -6,27 +6,87 @@ This application was generated using http://start.vertx.io
 
 == Endpoints
 * Cadastrar Produto:
+
 ```
 POST: <ip>:8080/api/v1/products/
 ```
+* Objeto JSON esperado:
+
+```
+{
+  "serialNumber": 6,
+  "name": "Casaco preto",
+  "barCode": "154646",
+  "amountInStock":10
+}
+```
+
 * Listar Produtos cadastrados:
 
 ```
 GET: <ip>:8080/api/v1/products/
 ```
+* Objeto JSON retornado:
 
-* Cadastrar Venda:
+```
+{
+  "code": 200,
+  "content": [
+    {
+      "serialNumber": 6,
+      "name": "Casaco preto",
+      "barCode": "154646",
+      "amountInStock": 8
+    }
+  ]
+}
+```
 
-Ao cadastrar uma venda, automaticamente é feita a baixa no estoque.
+* Cadastrar Venda: Ao cadastrar uma venda, automaticamente é feita a baixa no estoque.
 
 ```
 POST: <ip>:8080/api/v1/sales/
+```
+* Objeto JSON esperado:
+
+```
+[
+  {
+	  "serialNumber": 6,
+    "name": "Casaco preto",
+    "barCode": "154646"
+  },
+  {
+    "serialNumber": 2,
+    "name": "Calça Jeans",
+    "barCode": "24568"
+  }
+]
 ```
 
 * Listar Vendas:
 
 ```
 GET: <ip>:8080/api/v1/sales/
+```
+
+* Objeto JSON retornado:
+
+```
+{
+  "code": 200,
+  "content": [
+    {
+      "product": {
+        "serialNumber": 6,
+        "name": "Casaco preto",
+        "barCode": "154646",
+        "amountInStock": 8
+      },
+      "amount": 2
+    }
+  ]
+}
 ```
 
 == Building

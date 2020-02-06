@@ -52,7 +52,7 @@ POST: <ip>:8080/api/v1/sales/
 ```
 [
   {
-	  "serialNumber": 6,
+    "serialNumber": 6,
     "name": "Casaco preto",
     "barCode": "154646"
   },
